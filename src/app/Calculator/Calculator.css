@@ -1,0 +1,13 @@
+.calculator-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+}
+
+.calculator-title {
+    margin: 0 0 16px;
+    color: #111827;
+    font-size: 20px;
+    font-weight: 700;
+}
