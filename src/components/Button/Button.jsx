@@ -1,6 +1,6 @@
 import "./Button.css";
-const Button = ({ children, color = "primary" }) =>
-    <button className={`button ${color}`}>{children}</button>
+const Button = ({ children, color, onClick }) =>
+    <button onClick={onClick} className={`button ${color}`}>{children}</button>
 export default Button;
 
 // Button 的 isActive 属性

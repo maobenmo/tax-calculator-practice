@@ -5,16 +5,18 @@ import Disclaimer from "./app/Disclaimer";
 import FinancialYearSelect from "./app/FinancialYearSelect";
 import Header from "./app/Header";
 import TaxRateTableForFinancialYear from "./app/TaxRateTableForFinancialYear";
+import { useState } from 'react';
 
 function App() {
+  const [financialYear, setFinancialYear] = useState();
 
   return (
     <div className="page">
       <div className="page-container">
         <Header />
-        <FinancialYearSelect />
+        <FinancialYearSelect financialYear={financialYear} setFinancialYear={setFinancialYear} />
         <div className="main-grid">
-          <TaxRateTableForFinancialYear />
+          <TaxRateTableForFinancialYear financialYear={financialYear} />
           <Calculator />
         </div>
         <Disclaimer />
