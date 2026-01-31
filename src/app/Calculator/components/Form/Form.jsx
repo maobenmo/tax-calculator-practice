@@ -1,4 +1,5 @@
 import "./Form.css";
+import Button from "../../../../components/Button";
 
 const Form = () => (
     <form className="calculator-form">
@@ -16,9 +17,9 @@ const Form = () => (
             </div>
         </div>
 
-        <button className="calculator-button" type="button">
+        <Button color="primary">
             Calculate Tax
-        </button>
+        </Button>
     </form>
 );
 

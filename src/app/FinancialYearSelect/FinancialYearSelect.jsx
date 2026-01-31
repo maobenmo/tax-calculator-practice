@@ -1,21 +1,21 @@
 import "./FinancialYearSelect.css";
 import Card from "../../components/Card";
+import Button from "../../components/Button";
 const FinancialYearSelect = () => (
     <div className="financial-year-container">
-    <Card content={
-        <div>
+        <Card>
             <p className="financial-year-label">Select Financial Year</p>
             <div className="financial-year-buttons">
-                <button className="financial-year-button is-active" type="button">
+                <Button color="primary">
                     FY 2023-24
-                </button>
-                <button className="financial-year-button" type="button">
+                </Button>
+                <Button color="muted">
                     FY 2024-25
-                </button>
+                </Button>
             </div>
-        </div>}
-    />
+        </Card >
     </div>
+
 );
 
 export default FinancialYearSelect;
