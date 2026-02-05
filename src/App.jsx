@@ -17,7 +17,7 @@ function App() {
         <FinancialYearSelect financialYear={financialYear} onFinancialYearClick={(value) => setFinancialYear(value)} />
         <div className="main-grid">
           <TaxRateTableForFinancialYear financialYear={financialYear} />
-          <Calculator />
+          <Calculator financialYear={financialYear} />
         </div>
         <Disclaimer />
       </div>

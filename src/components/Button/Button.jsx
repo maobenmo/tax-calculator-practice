@@ -1,4 +1,7 @@
 import "./Button.css";
+
+//花括号--解构赋值object,这里是{ children, color, onClick }，方括号[]--解构赋值array
+
 const Button = ({ children, color, onClick }) =>
     <button onClick={onClick} className={`button ${color}`}>{children}</button>
 export default Button;
