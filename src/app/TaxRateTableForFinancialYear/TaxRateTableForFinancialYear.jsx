@@ -1,44 +1,53 @@
 import "./TaxRateTableForFinancialYear.css";
 import Card from "../../components/Card";
+import { TAX_TABLES } from "../../common/data";
 
-const TaxRateTableForFinancialYear = () => (
-    <Card>
-        <div>
-            <h2 className="tax-title">Tax Rates - FY 2023-24</h2>
-            <div className="tax-table-wrapper">
-                <table className="tax-table">
-                    <thead>
-                        <tr>
-                            <th>Taxable Income</th>
-                            <th>Tax Rate</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>$0 - $18,200</td>
-                            <td>Nil</td>
-                        </tr>
-                        <tr>
-                            <td>$18,201 - $45,000</td>
-                            <td>16%</td>
-                        </tr>
-                        <tr>
-                            <td>$45,001 - $120,000</td>
-                            <td>30%</td>
-                        </tr>
-                        <tr>
-                            <td>$120,001 - $180,000</td>
-                            <td>37%</td>
-                        </tr>
-                        <tr>
-                            <td>$180,001 and above</td>
-                            <td>45%</td>
-                        </tr>
-                    </tbody>
-                </table>
+const TaxRateTableForFinancialYear = ({ financialYear }) => {
+    const formatIncomeRange = (min, max) => {
+        const formattedMin = min.toLocaleString();
+
+        if (max === Infinity) {
+            return `$${formattedMin} and above`;
+        }
+
+        const formattedMax = max.toLocaleString();
+        return `$${formattedMin} - $${formattedMax}`;
+    };
+
+    const formatTaxRate = (rate) => {
+        return rate === 0 ? 'Nil' : `${Math.round(rate * 100)}%`;
+    };
+
+    const formatFinancialYear = (financialYear) => {
+        const [prefix, startYear, endYear] = financialYear.split('_');
+        return `${prefix} ${startYear}-${endYear}`;
+    };
+
+    return (
+        <Card>
+            <div>
+                <h2 className="tax-title">Tax Rates - {formatFinancialYear(financialYear)}</h2>
+                <div className="tax-table-wrapper">
+                    <table className="tax-table">
+                        <thead>
+                            <tr>
+                                <th>Taxable Income</th>
+                                <th>Tax Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {TAX_TABLES[financialYear].map(({ min, max, rate }, index) => (
+                                <tr key={index}>
+                                    <td>{formatIncomeRange(min, max)}</td>
+                                    <td>{formatTaxRate(rate)}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </Card>
-);
+        </Card>
+    )
+};
 
 export default TaxRateTableForFinancialYear;
